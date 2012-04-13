@@ -12,7 +12,9 @@
 		"url": "https://meekgeek@github.com/meekgeek/mxmlc.git"
 	},
 	"dependencies": {
-		"commander": "0.5.2"
+		"commander": "0.5.2",
+        "nconf": "0.5.1",
+        "prompt": "0.1.12"
 	},
 	"engines": { "node": "0.6.10" }
 }
