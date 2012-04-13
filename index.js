@@ -2,6 +2,12 @@ var program = require('commander');
 var execFile = require('child_process').execFile;
 
 program
+	.command('init')
+	.action( function(env){
+
+	});
+
+program
 	.command('run')
 	.action( function(env){
 

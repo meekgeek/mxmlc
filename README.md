@@ -1,30 +1,18 @@
 # mxmlc
 
-While being a functional FLV to MP3 converter, flv2mp3 is not intended to be used as an actual converter. The sole purpose of this module is to show what else Node.js can be used for, apart from developing websites.
+This app aims to simplify the Flex sdk and to give developers/designers another tool when it comes to compiling your Actionscript.
 
-**Note**: The current version of flv2mp3 is not tested under Windows, and will mostly liked not work. The code is intentionally left minimal, with no comments and minimal error checking, to make it non-distracting for beginners. 
+**Note**: The current version is my first atempt at creating node package. 
 
 ## Installation
 
-### Install ffmpeg first
+### Install Flex SDK first
 
-flv2mp3 uses ffmpeg for the conversion process, so make sure you install it first.
-
-On Ubuntu
-
-    $ apt-get install ffmpeg
-
-On Mac
-
-    $ brew install ffmpeg
-
-On CentOS
-
-    $ yum install ffmpeg
+You don't need Flex, just the SDK.  You can download the Flex SDK at <http://opensource.adobe.com/wiki/display/flexsdk/>
 
 ### Install mxmlc
 
-It is recommended to install flv2mp3 as a global module, so that you can call it from any path on your computer.
+It is recommended to install mxmlc as a global module, so that you can call it from any path on your computer.
 
     $ [sudo] npm install mxmlc -g
 
