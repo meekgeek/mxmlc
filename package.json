@@ -1,18 +1,18 @@
 {
-	"name": "flv2mp3",
+	"name": "mxmlc",
 	"version": "0.0.2",
-	"description": "Node.js module to convert FLV to MP3 files",
+	"description": "Node.js module to build ActionScript",
 	"preferGlobal": "true",
 	"main": "index.js",
-	"bin": { "flv2mp3": "index.js" },
-	"author": "Hack Sparrow <captain@hacksparrow.com>",
-	"keywords": ["mp3", "flv", "converter"],
+	"bin": { "mxmlc": "index.js" },
+	"author": "Joel Caballero <joel@meekgeek.net>",
+	"keywords": ["as3", "actionscript", "mxmlc", "flex"],
 	"repository" : {
 		"type": "git",
-		"url": "https://hacksparrow@github.com/hacksparrow/flv2mp3.git"
+		"url": "https://meekgeek@github.com/meekgeek/mxmlc.git"
 	},
 	"dependencies": {
 		"commander": "0.5.2"
 	},
-	"engines": { "node": "*" }
+	"engines": { "node": "0.6.10" }
 }
