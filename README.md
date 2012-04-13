@@ -16,16 +16,22 @@ It is recommended to install mxmlc as a global module, so that you can call it f
 
     $ [sudo] npm install mxmlc -g
 
-## Uage
+## Usage
 
-Specify the input FLV file and the optional output directory.
+Specify the input Actionscript file and the optional output directory.
 
-    Usage: mxmlc [options]
+	Usage: index.js [options] [command]
+	
+	Commands:
 
-    Options:
+    	init 
+    	Initializes and creates the mxmlc.properties file.
+    	
+    	run 
 
-    -h, --help         output usage information
-    -V, --version      output the version number
-    -f, --file <path>  FLV file path
-    -o, --out [path]   Output directory
+	Options:
+
+    	-h, --help           output usage information
+    	-V, --version        output the version number
+    	-r, --release-build  Create a release build
 
