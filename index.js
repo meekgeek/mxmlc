@@ -1,5 +1,10 @@
+//var fs = require('fs');
+var prompt = require('prompt');
 var program = require('commander');
 var execFile = require('child_process').execFile;
+var nconf = require('nconf');
+
+nconf.file({file:"mxmlc.properties"});
 
 program
 	.command('init')
