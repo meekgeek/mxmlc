@@ -63,12 +63,15 @@ program
 			}
 		}
 
+		nconf.set('defaults:background-color', '0xffffff' );
+		nconf.set('defaults:frame-rate', '30' );
+		nconf.set('defaults:size', '980,590' );
 
-		function tryExit() {
+		//function tryExit() {
 			nconf.save(function(err){
 				process.exit(0);
 			});
-		}
+		//}
 	});
 
 program
@@ -83,20 +86,27 @@ program.parse(process.argv);
 
 function build(file) {
 	
+	/*"-default-background-color=0xffffff",
+	"-default-frame-rate=30",
+	"-default-size=980,590",*/
+
 	var mxmlc = "/Applications/Adobe Flash Builder 4.5/sdks/flex_sdk_4.6.0.23201B/bin/mxmlc";
 	var output = Boolean(!program.releaseBuild) ? "bin/"+file+".swf" : "release/"+file+".swf"
-	var args = ["-compiler.incremental=true",
-				//"-compiler.include-libraries=libs",
-				"-static-link-runtime-shared-libraries=true",
-				"-debug="+Boolean(!program.releaseBuild),
-				"-default-background-color=0xffffff",
-				"-default-frame-rate=30",
-				"-default-size=980,590",
-				"-source-path="+nconf.get('sourcePath'),
-				process.cwd()+"/"+file+".as",
-				"-o="+output ]
+	var mxmlc_args = [	"-compiler.incremental=true",
+						"-compiler.include-libraries="+nconf.get('libPath'),
+						"-static-link-runtime-shared-libraries=true",
+						"-debug="+Boolean(!program.releaseBuild),
+						"-source-path="+nconf.get('sourcePath'),
+						process.cwd()+"/"+file+".as",
+						"-o="+output ]
+
+	var defaults = nconf.get('defaults');
+	for ( var key in defaults ) {
+		console.log( key, defaults[key] );
+		mxmlc_args.push("-default-"+key+"="+defaults[key]);
+	}
 	
-	execFile(mxmlc,args,function(err,stdout,stderr){
+	execFile(mxmlc,mxmlc_args,function(err,stdout,stderr){
 		if(err){console.log(err);}
 		console.log('Done!'.green);
 		process.exit(0);

@@ -1,3 +1,11 @@
 node_modules/
 
 .DS_Store
+
+Main.as
+
+bin/Main.swf
+
+bin/Main.swf.cache
+
+mxmlc.properties
