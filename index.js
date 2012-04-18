@@ -15,63 +15,36 @@ program
 program
 	.command('init')
 	.description('Initializes and creates the mxmlc.properties file.')
-	.option('-k, --sdk <path>', "Directory to FLEX SDKs")
+	/*.option('-k, --sdk <path>', "Directory to FLEX SDKs")
 	.option('-s, --source-path', "Source path")
 	.option('-o, --output-path', "Output path")
 	.option('-f, --source-file', "File to compilet")
-	.option('-l, --lib-path', "Add lib path")
+	.option('-l, --lib-path', "Add lib path")*/
 	.action( function(){
-		//set sdk
-		if( program.sdkDir ) {
-			nconf.set('sdkDir', program.sdkDir );
-			console.log('sdkDir set to: '+program.sdkDir+''.blue);
-		} else {
-			if( ! nconf.get('sdkDir') ) {
-				//prompt
-				console.log('sdkDir default set'.blue);
-			}
-		}
+		if( ! nconf.get('sdkDir') )
+			nconf.set('sdkDir', '');
+		
+		if( ! nconf.get('sourcePath') )
+			nconf.set('sourcePath', '');
 
-		if( program.sourcePath ) {
-			nconf.set('sourcePath', program.sourcePath );
-			console.log('sourcePath set to: '+program.sourcePath+''.blue);
-		} else {
-			if( ! nconf.get('sourcePath') ) {
-				nconf.set('sourcePath', '');
-				console.log('sourcePath default set'.blue);
-			}
-		}
+		if( ! nconf.get('sourceFile') )
+			nconf.set('sourceFile', 'Main');
 
-		if( program.sourceFile ) {
-			nconf.set('sourceFile', program.sourceFile );
-			console.log('sourceFile set to: '+program.sourceFile+''.blue);
-		} else {
-			if( ! nconf.get('sourceFile') ) {
-				nconf.set('sourceFile', 'Main');
-				console.log('sourceFile default set'.blue);
+		if( ! nconf.get('libPath') )
+			nconf.set('libPath', "");
 
-			}
-		}
+		if( ! nconf.get('defaults:background-color') )
+			nconf.set('defaults:background-color', '0xffffff' );
 
-		if( program.libPath ) {
-			nconf.set('libPath', program.libPath );
-			console.log('libPath set to: '+program.libPath+''.blue);
-		} else {
-			if( ! nconf.get('libPath') ) {
-				nconf.set('libPath', "");
-				console.log('libPath default set'.blue);
-			}
-		}
-
-		nconf.set('defaults:background-color', '0xffffff' );
-		nconf.set('defaults:frame-rate', '30' );
-		nconf.set('defaults:size', '980,590' );
-
-		//function tryExit() {
-			nconf.save(function(err){
-				process.exit(0);
-			});
-		//}
+		if( ! nconf.get('defaults:frame-rate') )
+			nconf.set('defaults:frame-rate', '30' );
+		
+		if( ! nconf.get('defaults:size') )
+			nconf.set('defaults:size', '980,590' );
+		
+		nconf.save(function(err){
+			process.exit(0);
+		});
 	});
 
 program
@@ -114,8 +87,8 @@ function build(file) {
 };
 
 //console.log(process.env);
-if( ! nconf.get('sourceFile') ) {
-	console.log('Run "init" first!'.red);
+if( ! nconf.get('sdkDir') ) {
+	console.log('No SDK detected. Run "init" first, then edit the generated mxmlc.properties file'.red);
 	process.exit(0);
 }
 
@@ -123,7 +96,7 @@ if( ! nconf.get('sourceFile') ) {
 //console.log(program.args[0]);
 
 if( ! program.args[0] ) {
-	console.log('build');
+	//console.log('build');
 	build( nconf.get('sourceFile') );
 }
 
