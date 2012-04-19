@@ -1,4 +1,5 @@
-//var fs = require('fs');
+#!/usr/bin/env node
+
 var prompt = require('prompt');
 var program = require('commander');
 var execFile = require('child_process').execFile;
@@ -61,8 +62,8 @@ program
 			compc_args.push("-compiler.library-path "+nconf.get('libPath') );
 		}
 
-		console.log( compc+" "+compc_args.toString().replace(',', ' ') );
-		exec(compc+" "+compc_args.toString().replace(',', ' '),function(err,stdout,stderr){
+		console.log( compc+" "+compc_args.toString().replace(/,/gi, ' ') );
+		exec(compc+" "+compc_args.toString().replace(/,/gi, ' '),function(err,stdout,stderr){
 			if(err){console.log(err);}
 			console.log('Done!'.green);
 			process.exit(0);
