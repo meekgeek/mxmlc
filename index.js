@@ -77,7 +77,7 @@ program
 	.action( function(options) {
 		console.log(Boolean(options.browser));
 		var command = Boolean(options.browser) ? "open -a 'Google Chrome' " : "open -a 'Flash Player' ";
-		var file = nconf.get('sourceFile');
+		var file = nconf.get('sourceFile').replace(/.as$/gi, "");
 		var swf = Boolean(!program.releaseBuild) ? "bin/"+file+".swf" : "release/"+file+".swf";
 			swf = process.cwd()+"/"+swf;
 
